@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guardian AI | AI-Powered Safety System for Elderly & Vulnerable Individuals</title>
+  <meta name="description" content="Guardian AI is an advanced, AI-powered monitoring system that detects falls, distress gestures, and emergencies in real-time. Privacy-first, offline-capable, and affordable." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #5ce1e6;
+      --secondary: #ffd166;
+      --dark-bg: #0b1220;
+      --dark-card: #121c30;
+      --light-text: #e6eef9;
+      --medium-text: #a0b3d9;
+      --accent: #ff6b6b;
+      --success: #4ecdc4;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--dark-bg);
+      color: var(--light-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header, section {
+      padding: 80px 0;
+    }
+    
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--medium-text);
+      font-size: 1.1rem;
+    }
+    
+    strong {
+      color: var(--light-text);
+      font-weight: 600;
+    }
+    
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--primary);
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+      color: var(--medium-text);
+    }
+    
+    /* Header Styles */
+    .hero {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #0d1a30 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(92,225,230,0.05)"/></svg>');
+      background-size: cover;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+    }
+    
+    .tagline {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    
+    /* Card Styles */
+    .card {
+      background: var(--dark-card);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    th {
+      background: rgba(92, 225, 230, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 2rem;
+    }
+    
+    .feature-card {
+      background: var(--dark-card);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 2rem;
+    }
+    
+    .team-card {
+      background: var(--dark-card);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      background: var(--primary);
+      opacity: 0.8;
+    }
+    
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .team-role {
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    /* Contact Section */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 2rem;
+    }
+    
+    .contact-item {
+      flex: 1;
+      min-width: 250px;
+      background: var(--dark-card);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    /* Navigation */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 18, 32, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-links a {
+      color: var(--light-text);
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* CTA Button */
+    .cta-button {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--dark-bg);
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    
+    .cta-button:hover {
+      background: var(--secondary);
+      color: var(--dark-bg);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(92, 225, 230, 0.3);
+    }
+    
+    /* Footer */
+    footer {
+      background: #080e18;
+      padding: 50px 0 30px;
+      text-align: center;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .footer-tagline {
+      font-style: italic;
+      color: var(--medium-text);
+      margin-bottom: 30px;
+    }
+    
+    .copyright {
+      color: var(--medium-text);
+      font-size: 0.9rem;
+      margin-top: 30px;
+    }
+    
+    /* Market & Business Model Specific Styles */
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 2rem 0;
+    }
+    
+    .market-card {
+      background: var(--dark-card);
+      border-radius: 10px;
+      padding: 25px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .market-card h3 {
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 2rem 0;
+    }
+    
+    .stat-card {
+      background: rgba(92, 225, 230, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      color: var(--medium-text);
+      font-size: 0.9rem;
+    }
+    
+    .revenue-table {
+      width: 100%;
+      margin: 2rem 0;
+    }
+    
+    .revenue-table th {
+      background: rgba(255, 209, 102, 0.1);
+    }
+    
+    .highlight {
+      background: rgba(92, 225, 230, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    /* Technical Architecture */
+    .architecture-diagram {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 2rem 0;
+    }
+    
+    .tech-stack-item {
+      background: var(--dark-card);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .tech-stack-item h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+    
+    /* System Flow */
+    .system-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0;
+    }
+    
+    .flow-step {
+      background: var(--dark-card);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      width: 80%;
+      text-align: center;
+      position: relative;
+    }
+    
+    .flow-step::after {
+      content: '↓';
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    
+    .flow-step:last-child::after {
+      display: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero::before {
+        width: 100%;
+        opacity: 0.3;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      .flow-step {
+        width: 95%;
+      }
+    }
+
+    .production-notice {
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a25 100%);
+  border: 2px solid #ffd166;
+  border-left: 6px solid #ffd166;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 3rem 0;
+  box-shadow: 0 10px 30px rgba(255, 209, 102, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.production-notice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
+}
+
+.notice-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 209, 102, 0.3);
+  padding-bottom: 15px;
+}
+
+.notice-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.notice-header h3 {
+  color: #ffd166;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.notice-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  color: #e6eef9;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.spec-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255, 209, 102, 0.2);
+}
+
+.spec-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.spec-card h4 {
+  color: #ffd166;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.spec-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.spec-card li {
+  margin-bottom: 12px;
+  color: #a0b3d9;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.investment-highlight {
+  background: linear-gradient(90deg, rgba(255, 209, 102, 0.2), transparent);
+  border: 1px solid #ffd166;
+  border-radius: 8px;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ffd166;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .production-notice {
+    padding: 20px;
+    margin: 2rem 0;
+  }
+  
+  .notice-header h3 {
+    font-size: 1.5rem;
+  }
+}
+
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(92, 225, 230, 0.1);
+  border: 1px solid var(--primary);
+  border-radius: 50px;
+  padding: 8px 20px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.company-name {
+  color: var(--primary);
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.product-label {
+  color: var(--medium-text);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.company-intro {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--secondary);
+  padding: 15px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+}
+
+.company-intro p {
+  margin: 0;
+  color: var(--light-text);
+}
+
+.founding-vision {
+  background: linear-gradient(135deg, rgba(92, 225, 230, 0.1), rgba(255, 209, 102, 0.1));
+  border: 1px solid rgba(92, 225, 230, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 25px 0;
+  position: relative;
+}
+
+.founding-vision::before {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--dark-bg);
+  padding: 0 10px;
+  font-size: 1.2rem;
+}
+
+.founding-vision p {
+  margin: 0;
+  color: var(--light-text);
+  font-style: italic;
+}
+
+/* Enhanced hero content spacing */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .company-badge {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .company-intro, .founding-vision {
+    padding: 15px;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="nav-container">
+    <div class="container nav-content">
+      <div class="logo">Guardian AI</div>
+      <div class="nav-links">
+        <a href="#vision-mission">Vision</a>
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#technology">Technology</a>
+        <a href="#market">Market</a>
+        <a href="#business-model">Business</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+<header class="hero">
+  <div class="container hero-content">
+    <div class="company-badge">
+      <span class="company-name">JarnikX Nova</span>
+      <span class="product-label">Presents</span>
+    </div>
+    <h1>Guardian AI</h1>
+    <div class="tagline">Intelligent Protection for Vulnerable Lives</div>
+    <div class="company-intro">
+      <p><strong>JarnikX Nova</strong> is an emerging technology company focused on developing innovative AI solutions for social impact. We are proud to introduce our flagship product:</p>
+    </div>
+    <p><strong>Guardian AI</strong> is an advanced, AI-powered monitoring system designed to safeguard elderly individuals, disabled persons, and vulnerable communities. Unlike wearables or cloud-dependent systems, Guardian AI is <strong>affordable, privacy-first, and hybrid</strong>, operating both <strong>offline (GSM alerts)</strong> and <strong>online (mobile app + cloud)</strong>.</p>
+    <p>It provides <strong>life-saving features</strong> such as fall detection, distress gesture recognition, SOS voice alerts, emotional distress analysis, and face recognition to detect strangers. With a one-time cost and no subscriptions, Guardian AI is positioned to scale across <strong>homes, hospitals, and rural communities</strong>.</p>
+    
+    <div class="founding-vision">
+      <p><strong>Forward-Looking Vision:</strong> JarnikX Nova is preparing to launch operations with Guardian AI as our cornerstone product, aiming to become a leader in ethical AI solutions for healthcare and safety markets.</p>
+    </div>
+    
+    <a href="#contact" class="cta-button">Request Investor Deck</a>
+  </div>
+</header>
+
+  <section id="vision-mission">
+    <div class="container">
+      <h2>Vision & Mission</h2>
+      <div class="card">
+        <p><strong>Vision:</strong> To make Guardian AI the world's most trusted intelligent protection system — ensuring that no human faces emergencies alone.</p>
+        <p><strong>Mission:</strong> To create AI-driven, privacy-first safety technology that understands human emotions, acts autonomously in emergencies, and protects every household through ethical intelligence and affordability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="container">
+      <h2>The Critical Problem</h2>
+      <div class="card">
+        <p><strong>Falls are the second leading cause of accidental injury deaths worldwide</strong>, disproportionately affecting the elderly, especially those living alone. Existing fall detection systems often rely on internet connectivity, wearable devices, or cloud services, leading to issues like:</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">💸</div>
+            <h3>High Costs</h3>
+            <p>Premium devices like Apple Watch cost ₹30,000+ with ongoing subscriptions</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📶</div>
+            <h3>Internet Dependency</h3>
+            <p>Most solutions fail during internet outages common in rural areas</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy Concerns</h3>
+            <p>Cloud-based systems expose sensitive video data to third parties</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⌚</div>
+            <h3>User Resistance</h3>
+            <p>Elderly individuals often forget or refuse to wear devices consistently</p>
+          </div>
+        </div>
+        
+        <div class="highlight">
+          <p><strong>The Result:</strong> Millions of elderly and disabled individuals live alone, vulnerable to emergencies with no reliable way to call for help when needed most.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solution">
+    <div class="container">
+      <h2>Our Complete Solution</h2>
+      <div class="card">
+        <p><strong>Guardian AI</strong> offers a comprehensive safety ecosystem that combines health emergency detection with advanced security features in one affordable package.</p>
+        
+        <h3>How Guardian AI Works</h3>
+        <div class="system-flow">
+          <div class="flow-step">
+            <h4>1. Data Capture</h4>
+            <p>Cameras & microphones capture video/audio data from the environment</p>
+          </div>
+          <div class="flow-step">
+            <h4>2. AI Analysis</h4>
+            <p>Multiple AI models analyze pose, gestures, emotions, voice, and faces</p>
+          </div>
+          <div class="flow-step">
+            <h4>3. Decision Engine</h4>
+            <p>Multi-modal fusion determines emergency situations with high accuracy</p>
+          </div>
+          <div class="flow-step">
+            <h4>4. Alert & Response</h4>
+            <p>Local alarms, GSM calls/SMS, and app notifications trigger immediately</p>
+          </div>
+        </div>
+        
+        <h3>Core Safety Features</h3>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Fall Detection</h3>
+            <p>AI-powered pose estimation detects falls using MediaPipe/BlazePose</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👐</div>
+            <h3>Distress Gestures</h3>
+            <p>Recognizes emergency gestures like chest clutching for cardiac distress</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">😟</div>
+            <h3>Emotion Analysis</h3>
+            <p>Detects pain, fear, or unconsciousness using FER/DeepFace models</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎤</div>
+            <h3>Voice Alerts</h3>
+            <p>Listens for SOS keywords like "help" or "bachao" in multiple languages</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>Face Recognition</h3>
+            <p>Verifies identity and detects strangers using FaceNet/MobileFaceNet</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📹</div>
+            <h3>Smart CCTV</h3>
+            <p>360° monitoring, motion detection, night vision, and privacy blur zones</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="technology">
+    <div class="container">
+      <h2>Technical Architecture</h2>
+      <div class="card">
+        <p>Guardian AI uses an advanced edge AI architecture designed for reliability, privacy, and affordability.</p>
+        
+        <h3>System Architecture</h3>
+        <div class="tech-stack-grid">
+          <div class="tech-stack-item">
+            <h4>Hub</h4>
+            <p>Raspberry Pi 4 Model B (4GB) running all inference & orchestration</p>
+          </div>
+          <div class="tech-stack-item">
+            <h4>Room Nodes</h4>
+            <p>ESP32-CAM units (one per room) + optional Pi Camera for hub room</p>
+          </div>
+          <div class="tech-stack-item">
+            <h4>Audio</h4>
+            <p>USB mic array at hub; optional I2S MEMS mics in rooms</p>
+          </div>
+          <div class="tech-stack-item">
+            <h4>Communication</h4>
+            <p>Wi-Fi for room nodes → hub; GSM (SIM800L) for offline alerting</p>
+          </div>
+        </div>
+
+        <div class="highlight">
+  <p><strong>Note on Technical Architecture:</strong> The Raspberry Pi + ESP32-CAM architecture described here represents our MVP development platform. For commercial production, we have designed and are building a custom integrated board that combines all these functionalities into a single, optimized hardware solution with enhanced reliability, lower power consumption, and reduced manufacturing costs.</p>
+</div>
+<div class="production-notice">
+  <div class="notice-header">
+    <div class="notice-icon">🏭</div>
+    <h3>Production Hardware Evolution</h3>
+  </div>
+  <div class="notice-content">
+    <p class="notice-intro">While the Raspberry Pi + ESP32-CAM architecture served as our effective MVP development platform, we have engineered a <strong>custom System-on-Chip (SoC) solution</strong> for mass production that delivers superior performance, reliability, and cost efficiency.</p>
+    
+    <div class="specs-grid">
+      <div class="spec-card">
+        <div class="spec-icon">🚀</div>
+        <h4>Custom SoC Architecture</h4>
+        <ul>
+          <li><strong>Processor:</strong> Quad-core ARM Cortex-A53 @ 1.5GHz with integrated Neural Processing Unit (NPU) capable of 3 TOPS for real-time multi-model AI inference</li>
+          <li><strong>Memory:</strong> 2GB LPDDR4 RAM + 16GB eMMC flash with wear-leveling for continuous operation</li>
+          <li><strong>Vision Processing:</strong> Dual MIPI CSI-2 camera interfaces with integrated Image Signal Processor (ISP) supporting HDR, noise reduction, and lens correction</li>
+          <li><strong>Connectivity:</strong> Integrated 4G/LTE Cat-1 modem with fallback to 2G, dual-band Wi-Fi 6, Bluetooth 5.2 for peripheral connectivity</li>
+          <li><strong>Audio Processing:</strong> 4-channel MEMS microphone array with beamforming and acoustic echo cancellation</li>
+          <li><strong>Power Management:</strong> Advanced PMIC with 85% efficiency, support for 5-24V input range, and supercapacitor backup for 30-minute emergency operation</li>
+          <li><strong>Security:</strong> Hardware security module with AES-256/SHA-2 acceleration, secure boot, and tamper detection</li>
+          <li><strong>Environmental:</strong> Industrial temperature range (-20°C to 70°C), 6-layer PCB with EMI shielding</li>
+        </ul>
+      </div>
+      
+      <div class="spec-card">
+        <div class="spec-icon">💰</div>
+        <h4>Manufacturing Advantages</h4>
+        <ul>
+          <li><strong>Cost Reduction:</strong> 45% lower BOM cost compared to discrete component approach</li>
+          <li><strong>Reliability:</strong> MTBF >100,000 hours with industrial-grade components</li>
+          <li><strong>Power Efficiency:</strong> 60% lower power consumption (3W typical vs 8W for Pi-based solution)</li>
+          <li><strong>Form Factor:</strong> 70% smaller footprint enabling discreet installation</li>
+          <li><strong>Supply Chain:</strong> Single-board design reduces assembly complexity and component sourcing risks</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="investment-highlight">
+      <strong>This integrated design enables us to achieve production costs under ₹6,500 per unit while maintaining enterprise-grade reliability and performance.</strong>
+    </div>
+  </div>
+</div>
+        
+        <h3>AI Models & Software Stack</h3>
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>Technology</th>
+            <th>Purpose</th>
+          </tr>
+          <tr>
+            <td>Pose Detection</td>
+            <td>MediaPipe/BlazePose, MoveNet-Lite</td>
+            <td>Fall detection using body keypoints</td>
+          </tr>
+          <tr>
+            <td>Gesture Recognition</td>
+            <td>Temporal CNN (TCN) or Lite-LSTM</td>
+            <td>Detect distress gestures like chest clutching</td>
+          </tr>
+          <tr>
+            <td>Emotion Analysis</td>
+            <td>MobileNet-V2 finetuned on FER-2013/AffectNet</td>
+            <td>Identify pain, fear, unconsciousness</td>
+          </tr>
+          <tr>
+            <td>Voice Detection</td>
+            <td>DS-CNN-Lite or tinyconv on MFCC</td>
+            <td>Keyword spotting for SOS phrases</td>
+          </tr>
+          <tr>
+            <td>Face Recognition</td>
+            <td>MobileFaceNet (128-D embeddings)</td>
+            <td>Identity verification and stranger detection</td>
+          </tr>
+          <tr>
+            <td>Development</td>
+            <td>Python, TensorFlow Lite, OpenCV, ONNX</td>
+            <td>Core AI development and deployment</td>
+          </tr>
+          <tr>
+            <td>Mobile App</td>
+            <td>Flutter with Firebase integration</td>
+            <td>Caregiver interface and notifications</td>
+          </tr>
+        </table>
+        
+        <h3>Privacy & Security</h3>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Local Processing</h3>
+            <p>All AI inference happens on-device; no video sent to cloud by default</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📁</div>
+            <h3>Encrypted Storage</h3>
+            <p>AES-256 encrypted local storage with LUKS encryption</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👁️</div>
+            <h3>Privacy Masking</h3>
+            <p>Configurable blur zones for sensitive areas like bathrooms</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Secure Updates</h3>
+            <p>Signed OTA updates with A/B partitions and rollback capability</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="container">
+      <h2>Market Opportunity</h2>
+      <div class="card">
+        <p>The global smart home and health safety market is experiencing unprecedented growth, driven by aging populations, rising healthcare costs, and technological advancements.</p>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">$98.2B</div>
+            <div class="stat-label">Global Smart Home Market (2024)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$42.5B</div>
+            <div class="stat-label">Global Elderly Care Market (2024)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">19.8%</div>
+            <div class="stat-label">CAGR (2024-2030)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">194M</div>
+            <div class="stat-label">Elderly in India by 2031</div>
+          </div>
+        </div>
+        
+        <h3>Target Market Segments</h3>
+        <div class="market-grid">
+          <div class="market-card">
+            <h3>Residential Market</h3>
+            <p><strong>Size:</strong> $32.4 billion globally</p>
+            <p><strong>Target:</strong> Elderly individuals living alone, families with special needs members</p>
+            <p><strong>India Potential:</strong> 12+ million households with elderly members</p>
+          </div>
+          <div class="market-card">
+            <h3>Healthcare Institutions</h3>
+            <p><strong>Size:</strong> $18.7 billion globally</p>
+            <p><strong>Target:</strong> Hospitals, nursing homes, assisted living facilities</p>
+            <p><strong>India Potential:</strong> 75,000+ hospitals and care facilities</p>
+          </div>
+          <div class="market-card">
+            <h3>Corporate & Insurance</h3>
+            <p><strong>Size:</strong> $9.3 billion globally</p>
+            <p><strong>Target:</strong> Insurance companies, corporate wellness programs</p>
+            <p><strong>India Potential:</strong> 50+ major insurance providers</p>
+          </div>
+        </div>
+        
+        <h3>Competitive Advantage</h3>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Apple Watch</th>
+            <th>Nest Cam</th>
+            <th>Vayyar Home</th>
+            <th>Guardian AI</th>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>₹30,000+</td>
+            <td>₹15,000+</td>
+            <td>₹35,000+</td>
+            <td>₹9,500</td>
+          </tr>
+          <tr>
+            <td>Requires Internet</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No (Offline) / Yes (Online)</td>
+          </tr>
+          <tr>
+            <td>Detects Fall</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Emotion/Gesture</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Voice Alert</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Face Recognition</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Auto Emergency Call</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes (via GSM)</td>
+          </tr>
+          <tr>
+            <td>Subscription</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Privacy Protection</td>
+            <td>Low</td>
+            <td>Low</td>
+            <td>Medium</td>
+            <td>High</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="business-model">
+    <div class="container">
+      <h2>Business Model</h2>
+      <div class="card">
+        <p>JarnikX Nova employs a diversified <strong>B2B2C hybrid model</strong> with multiple revenue streams designed for sustainable growth and market penetration.</p>
+        
+        <h3>Revenue Streams</h3>
+        <div class="market-grid">
+          <div class="market-card">
+            <h3>Hardware Sales</h3>
+            <p><strong>Primary Product:</strong> Guardian AI Home Unit</p>
+            <p><strong>Price:</strong> ₹9,500 per unit</p>
+            <p><strong>Margin:</strong> 42% gross margin</p>
+            <p><strong>Target:</strong> 10,000 units in Year 1</p>
+          </div>
+          <div class="market-card">
+            <h3>Subscription Services</h3>
+            <p><strong>Basic:</strong> ₹299/month (cloud storage & alerts)</p>
+            <p><strong>Premium:</strong> ₹499/month (advanced analytics + 24/7 monitoring)</p>
+            <p><strong>Enterprise:</strong> Custom pricing</p>
+            <p><strong>Target:</strong> 65% subscription attach rate</p>
+          </div>
+          <div class="market-card">
+            <h3>Enterprise Solutions</h3>
+            <p><strong>Healthcare Bundle:</strong> ₹25,000 per facility setup</p>
+            <p><strong>Monthly Service:</strong> ₹1,999 per facility</p>
+            <p><strong>Maintenance:</strong> 15% of hardware value annually</p>
+            <p><strong>Target:</strong> 200 facilities in Year 2</p>
+          </div>
+        </div>
+        
+        <h3>Financial Projections</h3>
+        <table class="revenue-table">
+          <tr>
+            <th>Metric</th>
+            <th>Year 1</th>
+            <th>Year 2</th>
+            <th>Year 3</th>
+          </tr>
+          <tr>
+            <td>Units Sold</td>
+            <td>10,000</td>
+            <td>35,000</td>
+            <td>85,000</td>
+          </tr>
+          <tr>
+            <td>Revenue (₹ Crore)</td>
+            <td>9.5</td>
+            <td>42.3</td>
+            <td>114.2</td>
+          </tr>
+          <tr>
+            <td>Gross Margin</td>
+            <td>22%</td>
+            <td>28%</td>
+            <td>35%</td>
+          </tr>
+          <tr>
+            <td>Net Profit</td>
+            <td>₹1.2 Cr</td>
+            <td>₹4.8 Cr</td>
+            <td>₹28.5 Cr</td>
+          </tr>
+        </table>
+        
+        <h3>Funding Requirements</h3>
+        <div class="highlight">
+          <p><strong>Seed Funding:</strong> JarnikX Nova seeks ₹1 crore in seed funding for 10–12% equity to scale manufacturing, enhance AI R&D, and expand market presence.</p>
+          <p><strong>Funds Allocation:</strong> 40% product development, 25% R&D, 20% marketing, 10% operations, 5% compliance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2>Founding Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-icon">👨‍💼</div>
+          <div class="team-name">Jubin T Joseph</div>
+          <div class="team-role">Founder & CEO</div>
+          <p>AI Systems & Product Strategy</p>
+        </div>
+        <div class="team-card">
+          <div class="team-icon">👨‍💼</div>
+          <div class="team-name">Karthik S Kailas</div>
+          <div class="team-role">Founder & CEO</div>
+          <p>Strategic Growth & Partnerships</p>
+        </div>
+        <div class="team-card">
+          <div class="team-icon">👨‍💼</div>
+          <div class="team-name">Muhammed Nabeel Sha A</div>
+          <div class="team-role">Founder & COO</div>
+          <p>Operations, Supply Chain & QA</p>
+        </div>
+        <div class="team-card">
+          <div class="team-icon">👨‍💼</div>
+          <div class="team-name">Rishijith Karthikeyan M</div>
+          <div class="team-role">Founder & CTO</div>
+          <p>Embedded Systems & Security</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="container">
+      <h2>Product Roadmap</h2>
+      <div class="card">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>v1.0 (Current)</h3>
+            <p>Core fall/gesture/voice detection + GSM alerts; LAN live view; OTA updates</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔮</div>
+            <h3>v1.1</h3>
+            <p>Face verification + stranger alert; motion-masking privacy zones</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>v1.2</h3>
+            <p>Activity classifier (lying vs seated vs walking) for ADL insights</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>v2.0</h3>
+            <p>Jetson Nano/Orin NX option for facilities; on-node gesture on ESP32-S3 NPU</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <h3>Location</h3>
+          <p>Kerala, India</p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:jubin.guardianai@gmail.com">jarnikxnova@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <h3>Website</h3>
+          <p><a href="https://guardianai.tech">guardianai.tech</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Guardian AI</div>
+      <div class="footer-tagline">The Eyes That Protect</div>
+      <div class="copyright">© 2025 JarnikX Nova. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
